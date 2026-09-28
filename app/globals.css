@@ -1,21 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b5d46;
-  --foreground: #f4efe8;
-  --accent: #d1b06a;
-  --accent-dark: #b98d46;
-  --muted: #dfe8e4;
-  --soft: #0f6d52;
-  --ink: #ffffff;
-  --line: rgba(255, 255, 255, 0.2);
+  --background: #fffcfa;
+  --foreground: #171717;
+  --primary: #f15a24;
+  --primary-hover: #d94a17;
+  --accent: #ff6b1a;
+  --accent-soft: #fff0e8;
+  --surface: #ffffff;
+  --surface-alt: #fff7f3;
+  --soft: #fff0e8;
+  --muted: #8a8a8a;
+  --secondary-text: #666666;
+  --ink: #171717;
+  --line: #e8e8e8;
+  --shadow-soft: rgba(22, 22, 22, 0.06);
+  --shadow-strong: rgba(22, 22, 22, 0.12);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
+  --color-accent: var(--primary);
   --color-soft: var(--soft);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --font-sans: "Times New Roman", Times, serif;
   --font-display: "Times New Roman", Times, serif;
 }
@@ -31,76 +40,16 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #0b5d46 0%, #0d694f 35%, #0a4d3d 100%);
+  background: linear-gradient(135deg, #fffaf7 0%, #fff7f3 24%, #fffdfb 100%);
   color: var(--foreground);
   font-family: "Times New Roman", Times, serif;
-  background-image: radial-gradient(circle at top left, rgba(209, 176, 106, 0.18), transparent 22%), radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.08), transparent 18%), linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: auto, auto, 48px 48px, 48px 48px;
+  background-image: radial-gradient(circle at top left, rgba(241, 90, 36, 0.12), transparent 19%), radial-gradient(circle at bottom right, rgba(255, 107, 26, 0.06), transparent 22%), linear-gradient(rgba(17, 17, 17, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(17, 17, 17, 0.02) 1px, transparent 1px);
+  background-size: auto, auto, 42px 42px, 42px 42px;
 }
 
-.site-background {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  background: #2b2d31;
-}
-
-.site-background canvas {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
-
-body:has(.site-background) {
-  --background: #0b5d46;
-  --foreground: #f4efe8;
-  color: #ffffff;
-  background: #0b5d46;
-}
-
-body:has(.site-background) > *:not(.site-background) {
-  position: relative;
-  z-index: 1;
-}
-
-body:has(.site-background) header {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: rgba(11, 93, 70, 0.8);
-}
-
-body:has(.site-background) footer,
-body:has(.site-background) .bg-soft,
-body:has(.site-background) .bg-white,
-body:has(.site-background) [class*="bg-[#f7f7f3]"],
-body:has(.site-background) [class*="bg-[#fbfcf8]"] {
-  background-color: rgba(15, 109, 82, 0.92) !important;
-}
-
-body:has(.site-background) .text-slate-400,
-body:has(.site-background) .text-slate-500,
-body:has(.site-background) .text-slate-600 {
-  color: rgba(255, 255, 255, 0.78) !important;
-}
-
-body:has(.site-background) .text-foreground,
-body:has(.site-background) .text-slate-700,
-body:has(.site-background) .text-slate-800 {
-  color: #ffffff !important;
-}
-
-body:has(.site-background) [class*="text-slate-"] {
-  color: #ffffff !important;
-}
-
-body:has(.site-background) .text-accent,
-body:has(.site-background) .eyebrow {
-  color: #ffffff !important;
-}
-
-body:has(.site-background) [class*="border-slate"] {
-  border-color: rgba(255, 255, 255, 0.2) !important;
+body,
+html {
+  overflow-x: clip;
 }
 
 html[lang="bn"] body {
@@ -169,14 +118,37 @@ html[lang="ar"] .font-display {
 
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translate3d(0, 120px, 0) scale(0.985);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
 
-.scroll-reveal.is-visible {
+.scroll-reveal[data-direction="left"] {
+  transform: translate3d(-170px, 0, 0) scale(0.985);
+}
+
+.scroll-reveal[data-direction="right"] {
+  transform: translate3d(170px, 0, 0) scale(0.985);
+}
+
+.scroll-reveal[data-direction="down"],
+.scroll-reveal[data-direction="up"] {
+  transform: translate3d(0, 150px, 0) scale(0.985);
+}
+
+.scroll-reveal[data-direction="scale"] {
+  transform: translate3d(0, 90px, 0) scale(0.92);
+}
+
+.scroll-reveal.is-visible,
+.scroll-reveal[data-direction="left"].is-visible,
+.scroll-reveal[data-direction="right"].is-visible,
+.scroll-reveal[data-direction="down"].is-visible,
+.scroll-reveal[data-direction="up"].is-visible,
+.scroll-reveal[data-direction="scale"].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 @keyframes reveal-up {
@@ -214,7 +186,13 @@ html[lang="ar"] .font-display {
   .scroll-card,
   .marquee,
   .reveal-up,
-  .scroll-reveal {
+  .scroll-reveal,
+  .scroll-reveal.is-visible,
+  .scroll-reveal[data-direction="left"],
+  .scroll-reveal[data-direction="right"],
+  .scroll-reveal[data-direction="down"],
+  .scroll-reveal[data-direction="up"],
+  .scroll-reveal[data-direction="scale"] {
     transform: none !important;
     animation: none !important;
     opacity: 1 !important;

@@ -64,7 +64,7 @@ export default function ReviewsAdmin() {
         </Field>
         {error ? <p className="text-red-500">{error}</p> : null}
         <div className="flex gap-2">
-          <button disabled={busy} className="rounded-full bg-accent px-4 py-2 font-semibold text-white transition hover:bg-[#1e8a80] disabled:opacity-40">
+          <button disabled={busy} className="rounded-full bg-accent px-4 py-2 font-semibold text-white transition hover:bg-[#181548] disabled:opacity-40">
             {busy ? "Saving..." : editing ? "Update review" : "Add review"}
           </button>
           {editing ? <button type="button" onClick={() => { setEditing(null); setForm(empty); }}>Cancel</button> : null}

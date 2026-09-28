@@ -52,7 +52,7 @@ export function ProjectDetail({ id }: { id: string }) {
           href={project.liveUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-10 inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-[#1e8a80]"
+          className="mt-10 inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-[#181548]"
         >
           {t.viewLive}
         </a>

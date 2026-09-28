@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
           <input className={inputClass} type="email" required placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input className={inputClass} type="password" required placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           {error ? <p className="text-sm text-red-500">{error}</p> : null}
-          <button disabled={busy || !configured} className="rounded-full bg-accent py-2 font-semibold text-white hover:bg-[#1e8a80] disabled:opacity-40">
+          <button disabled={busy || !configured} className="rounded-full bg-accent py-2 font-semibold text-white hover:bg-[#181548] disabled:opacity-40">
             {busy ? "Signing in…" : "Sign in"}
           </button>
         </div>

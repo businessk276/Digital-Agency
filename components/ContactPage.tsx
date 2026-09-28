@@ -17,7 +17,7 @@ export function ContactPage() {
           href={wa}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full bg-[#d9b674] px-6 py-3 text-sm font-semibold text-black hover:bg-[#caa15d]"
+          className="rounded-full bg-[#25216b] px-6 py-3 text-sm font-semibold text-white hover:bg-[#181548]"
         >
           {t.sendWhatsApp}
         </a>

@@ -81,16 +81,16 @@ export function HomePage() {
 
   return (
     <div className="overflow-x-clip">
-      <section id="home" className="relative overflow-hidden border-b border-slate-200/80">
+      <section id="home" className="relative overflow-hidden border-b border-[#e8e8e8] bg-white/80">
         <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
           <div className="reveal-up max-w-4xl">
             <p className="eyebrow mb-5">
               {t.heroKicker}
             </p>
-            <h1 className="font-display max-w-3xl text-5xl leading-[0.98] text-foreground sm:text-[3.4rem] md:text-[4.4rem] lg:text-[5rem]">
+            <h1 className="font-display max-w-3xl text-5xl leading-[0.98] text-[#171717] sm:text-[3.4rem] md:text-[4.4rem] lg:text-[5rem]">
               {t.heroTitle}
             </h1>
-            <p className="mt-7 max-w-xl text-base leading-7 text-slate-600 md:text-lg md:leading-8">{t.heroBody}</p>
+            <p className="mt-7 max-w-xl text-base leading-7 text-[#666666] md:text-lg md:leading-8">{t.heroBody}</p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
@@ -98,7 +98,7 @@ export function HomePage() {
                   event.preventDefault();
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
-                className="rounded-full bg-[#d9b674] px-6 py-3.5 text-sm font-semibold text-black shadow-xl shadow-slate-900/10 hover:-translate-y-0.5 hover:bg-[#caa15d]"
+                className="rounded-full bg-[#f15a24] px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#f15a24]/20 hover:-translate-y-0.5 hover:bg-[#d94a17]"
               >
                 {t.ctaPrimary}
               </a>
@@ -108,7 +108,7 @@ export function HomePage() {
                   event.preventDefault();
                   document.getElementById("work")?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
-                className="border-b border-foreground/30 px-1 py-2 text-sm font-semibold text-foreground hover:border-accent hover:text-accent"
+                className="border-b border-[#171717]/30 px-1 py-2 text-sm font-semibold text-[#171717] hover:border-[#f15a24] hover:text-[#f15a24]"
               >
                 {t.ctaSecondary}
               </a>
@@ -117,70 +117,70 @@ export function HomePage() {
         </div>
         <div className="flex justify-center pb-12 text-center md:pb-16">
           <div className="flex flex-col items-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">{t.trackRecord}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f15a24]">{t.trackRecord}</p>
             <CountUp value={completedOrders} />
-            <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">{t.completedOrders}</p>
+            <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-[#8a8a8a]">{t.completedOrders}</p>
           </div>
         </div>
       </section>
 
-      <div className="overflow-hidden border-y border-slate-100 bg-soft py-3">
-        <p className="marquee whitespace-nowrap text-xs tracking-[0.45em] uppercase text-slate-400">
+      <div className="overflow-hidden border-y border-[#e8e8e8] bg-[#fff7f3] py-3">
+        <p className="marquee whitespace-nowrap text-xs tracking-[0.45em] uppercase text-[#8a8a8a]">
           {` ${brand.legalName} · ${t.marquee} · ${t.tagline} · `.repeat(6)}
         </p>
       </div>
 
       <section id="services" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
-        <ScrollReveal className="section-rule pt-5">
+        <ScrollReveal className="section-rule pt-5" direction="left">
           <p className="eyebrow">{t.whatWeDo}</p>
-          <h2 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-6xl">{t.servicesHeadline}</h2>
-          <p className="mt-5 max-w-2xl text-slate-600">{t.servicesIntro}</p>
+          <h2 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.03em] text-[#171717] md:text-6xl">{t.servicesHeadline}</h2>
+          <p className="mt-5 max-w-2xl text-[#666666]">{t.servicesIntro}</p>
         </ScrollReveal>
-        <ScrollReveal delay={100}>
+        <ScrollReveal delay={100} direction="up">
           <ServicesGrid services={services} />
         </ScrollReveal>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-px border-y border-slate-200 bg-slate-200 md:grid-cols-3">
-        <ScrollReveal className="md:col-span-2">
-        <article className="bg-[#d9b674] p-8 text-[#0d3b2e] md:p-12">
-          <p className="eyebrow text-[#0d5c46]">{t.pointOfView}</p>
-          <h2 className="mt-5 max-w-2xl text-4xl font-semibold leading-tight text-[#0d3b2e] md:text-5xl">{t.focusTitle}</h2>
-          <p className="mt-5 max-w-2xl leading-8 text-[#234f46]">{t.focusBody}</p>
+      <section className="grid w-full gap-px border-y border-[#e8e8e8] bg-[#e8e8e8] md:grid-cols-3">
+        <ScrollReveal className="md:col-span-2" direction="left">
+        <article className="bg-[#fff0e8] p-8 text-[#171717] md:p-12">
+          <p className="eyebrow text-[#f15a24]">{t.pointOfView}</p>
+          <h2 className="mt-5 max-w-2xl text-4xl font-semibold leading-tight text-[#171717] md:text-5xl">{t.focusTitle}</h2>
+          <p className="mt-5 max-w-2xl leading-8 text-[#666666]">{t.focusBody}</p>
         </article>
         </ScrollReveal>
-        <ScrollReveal delay={140}>
-        <article className="bg-soft p-8 md:p-12">
+        <ScrollReveal delay={140} direction="right">
+        <article className="bg-[#fff7f3] p-8 md:p-12">
           <p className="eyebrow">{t.beyondBrief}</p>
-          <h2 className="mt-5 text-3xl font-semibold leading-tight">{t.legalTitle}</h2>
-          <p className="mt-5 leading-8 text-slate-600">{t.legalBody}</p>
+          <h2 className="mt-5 text-3xl font-semibold leading-tight text-[#171717]">{t.legalTitle}</h2>
+          <p className="mt-5 leading-8 text-[#666666]">{t.legalBody}</p>
         </article>
         </ScrollReveal>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-24 md:px-8">
-        <ScrollReveal className="section-rule grid gap-10 pt-5 md:grid-cols-[0.8fr_1.2fr]">
+        <ScrollReveal className="section-rule grid gap-10 pt-5 md:grid-cols-[0.8fr_1.2fr]" direction="left">
           <div>
             <p className="eyebrow">{t.howWeWork}</p>
-            <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-5xl">{t.teamTitle}</h2>
+            <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.03em] text-[#171717] md:text-5xl">{t.teamTitle}</h2>
           </div>
-          <p className="max-w-2xl text-xl leading-9 text-slate-600 md:text-2xl">{t.teamBody}</p>
+          <p className="max-w-2xl text-xl leading-9 text-[#666666] md:text-2xl">{t.teamBody}</p>
         </ScrollReveal>
       </section>
 
       <section id="work" className="mx-auto max-w-7xl px-5 pb-24 md:px-8">
-        <ScrollReveal className="section-rule flex flex-col gap-5 pt-5 md:flex-row md:items-end md:justify-between">
+        <ScrollReveal className="section-rule flex flex-col gap-5 pt-5 md:flex-row md:items-end md:justify-between" direction="left">
           <div>
             <p className="eyebrow">{t.selectedWork}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] md:text-5xl">{t.projectsTitle}</h2>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#171717] md:text-5xl">{t.projectsTitle}</h2>
           </div>
-          <p className="max-w-xs text-sm leading-6 text-slate-500">{t.workDescription}</p>
+          <p className="max-w-xs text-sm leading-6 text-[#666666]">{t.workDescription}</p>
         </ScrollReveal>
-        <ScrollReveal delay={80} className="mt-8 flex flex-wrap gap-2">
+        <ScrollReveal delay={80} className="mt-8 flex flex-wrap gap-2" direction="up">
           <button
             type="button"
             onClick={() => setActive("all")}
-            className={`border px-4 py-2 text-sm font-semibold ${active === "all" ? "border-accent bg-accent text-white" : "border-slate-300 text-slate-600"}`}
+            className={`border px-4 py-2 text-sm font-semibold ${active === "all" ? "border-[#f15a24] bg-[#f15a24] text-white" : "border-[#e8e8e8] text-[#666666]"}`}
           >
             {t.allCategories}
           </button>
@@ -189,14 +189,14 @@ export function HomePage() {
               key={category.id}
               type="button"
               onClick={() => setActive(category.id)}
-              className={`border px-4 py-2 text-sm font-semibold ${active === category.id ? "border-accent bg-accent text-white" : "border-slate-300 text-slate-600"}`}
+              className={`border px-4 py-2 text-sm font-semibold ${active === category.id ? "border-[#f15a24] bg-[#f15a24] text-white" : "border-[#e8e8e8] text-[#666666]"}`}
             >
               {category.name}
             </button>
           ))}
         </ScrollReveal>
         {visibleProjects.length === 0 ? (
-          <p className="mt-8 text-slate-400">{t.projectsEmpty}</p>
+          <p className="mt-8 text-[#8a8a8a]">{t.projectsEmpty}</p>
         ) : (
           <ScrollReveal delay={140} className="mt-10">
             <CardSlider items={visibleProjects.map((project) => (
@@ -208,11 +208,11 @@ export function HomePage() {
 
       {videos.length > 0 && (
         <section id="video-editing" className="mx-auto max-w-6xl px-4 pb-20">
-          <ScrollReveal>
+          <ScrollReveal direction="left">
             <p className="eyebrow">{t.motionFilm}</p>
-            <h2 className="bangla-section-heading mt-4 text-3xl font-semibold tracking-[-0.03em] md:text-5xl">{t.videoEditing}</h2>
+            <h2 className="bangla-section-heading mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#171717] md:text-5xl">{t.videoEditing}</h2>
           </ScrollReveal>
-          <ScrollReveal delay={120} className="mt-8">
+          <ScrollReveal delay={120} className="mt-8" direction="up">
             <VideoGallery videos={videos} />
           </ScrollReveal>
         </section>
@@ -220,18 +220,18 @@ export function HomePage() {
 
       {reviews.length > 0 && (
         <section id="reviews" className="mx-auto max-w-6xl px-4 pb-20">
-          <ScrollReveal>
+          <ScrollReveal direction="left">
             <p className="eyebrow">{t.clientPerspective}</p>
-            <h2 className="bangla-section-heading mt-4 text-4xl font-semibold tracking-[-0.03em] md:text-6xl">{t.reviews}</h2>
+            <h2 className="bangla-section-heading mt-4 text-4xl font-semibold tracking-[-0.03em] text-[#171717] md:text-6xl">{t.reviews}</h2>
           </ScrollReveal>
-          <ScrollReveal delay={120} className="mt-8">
+          <ScrollReveal delay={120} className="mt-8" direction="up">
             <CardSlider cardClass="w-[280px] sm:w-[300px]" items={reviews.map((review) => (
               <ScrollReveal key={review.id} delay={review.id ? 60 : 0}>
                 <button
                   type="button"
                   onClick={() => setSelectedReview(review)}
                   aria-label={t.openReview}
-                  className="group w-full max-w-[280px] overflow-hidden rounded-2xl border border-slate-200 bg-[#2b2d31] text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+                  className="group w-full max-w-[280px] overflow-hidden rounded-2xl border border-[#e8e8e8] bg-white text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                 >
                 <img
                   src={getDriveImageUrl(review.imageUrl) ?? review.imageUrl}
@@ -242,7 +242,7 @@ export function HomePage() {
                   }}
                   className="h-52 w-full object-contain object-top"
                 />
-                <span className="block border-t border-slate-100 px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 transition group-hover:text-accent">{t.viewFullReview}</span>
+                <span className="block border-t border-[#e8e8e8] px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#666666] transition group-hover:text-[#f15a24]">{t.viewFullReview}</span>
                 </button>
               </ScrollReveal>
             ))} />
@@ -262,7 +262,7 @@ export function HomePage() {
             <img
               src={getDriveImageUrl(selectedReview.imageUrl) ?? selectedReview.imageUrl}
               alt={t.clientReviewEnlarged}
-                className="max-h-[88vh] max-w-full rounded-xl bg-[#2b2d31] object-contain shadow-2xl"
+                className="max-h-[88vh] max-w-full rounded-xl bg-white object-contain shadow-2xl"
             />
             <button
               type="button"
@@ -295,7 +295,7 @@ export function HomePage() {
                         type="button"
                         onClick={() => setSelectedDesign(design)}
                         aria-label={t.openDesign}
-                        className="group w-full max-w-[280px] overflow-hidden rounded-2xl border border-slate-200 bg-[#2b2d31] text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+                        className="group w-full max-w-[280px] overflow-hidden rounded-2xl border border-[#e8e8e8] bg-white text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                       >
                       <img
                         src={getDriveImageUrl(design.imageUrl) ?? design.imageUrl}
@@ -306,7 +306,7 @@ export function HomePage() {
                         }}
                         className="h-52 w-full object-cover"
                       />
-                      <span className="block border-t border-slate-100 px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 transition group-hover:text-accent">{t.viewFullDesign}</span>
+                      <span className="block border-t border-[#e8e8e8] px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#666666] transition group-hover:text-[#f15a24]">{t.viewFullDesign}</span>
                       </button>
                     </ScrollReveal>
                   ))} />
@@ -329,7 +329,7 @@ export function HomePage() {
             <img
               src={getDriveImageUrl(selectedDesign.imageUrl) ?? selectedDesign.imageUrl}
               alt={t.designImageEnlarged}
-                        className="max-h-[88vh] max-w-full rounded-xl bg-[#2b2d31] object-contain shadow-2xl"
+                        className="max-h-[88vh] max-w-full rounded-xl bg-white object-contain shadow-2xl"
             />
             <button
               type="button"
@@ -345,16 +345,16 @@ export function HomePage() {
 
       {tasks.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 pb-20">
-          <ScrollReveal>
-            <h2 className="text-4xl font-bold">{t.workTitle}</h2>
+          <ScrollReveal direction="left">
+            <h2 className="text-4xl font-bold text-[#171717]">{t.workTitle}</h2>
           </ScrollReveal>
-          <ScrollReveal delay={100} className="mt-8 grid gap-4 md:grid-cols-2">
+          <ScrollReveal delay={100} className="mt-8 grid gap-4 md:grid-cols-2" direction="up">
             {tasks.map((task) => (
-              <ScrollReveal key={task.id} delay={80}>
-              <article className="rounded-3xl border border-slate-100 bg-[#2b2d31] p-6 shadow-sm">
-                <p className="text-[11px] tracking-[0.28em] uppercase text-accent">{task.status.replace("_", " ")}</p>
-                <h3 className="mt-3 text-xl font-semibold">{task.title}</h3>
-                <p className="mt-2 text-sm text-slate-500">{task.description}</p>
+              <ScrollReveal key={task.id} delay={80} direction="up">
+              <article className="rounded-3xl border border-[#e8e8e8] bg-white p-6 shadow-sm">
+                <p className="text-[11px] tracking-[0.28em] uppercase text-[#f15a24]">{task.status.replace("_", " ")}</p>
+                <h3 className="mt-3 text-xl font-semibold text-[#171717]">{task.title}</h3>
+                <p className="mt-2 text-sm text-[#666666]">{task.description}</p>
               </article>
               </ScrollReveal>
             ))}
@@ -362,32 +362,32 @@ export function HomePage() {
         </section>
       )}
 
-      <section id="contact" className="mx-auto max-w-7xl border-t border-slate-200 px-5 pb-28 pt-20 md:px-8">
-        <ScrollReveal className="max-w-4xl">
+      <section id="contact" className="mx-auto max-w-7xl border-t border-[#e8e8e8] px-5 pb-28 pt-20 md:px-8">
+        <ScrollReveal className="max-w-4xl" direction="left">
           <p className="eyebrow">{t.tagline}</p>
-          <h2 className="mt-5 font-display text-4xl leading-[0.95] text-foreground md:text-6xl">{t.contactTitle}</h2>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600">{t.contactBody}</p>
+          <h2 className="mt-5 font-display text-4xl leading-[0.95] text-[#171717] md:text-6xl">{t.contactTitle}</h2>
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-[#666666]">{t.contactBody}</p>
         </ScrollReveal>
-        <ScrollReveal delay={100} className="mt-10 flex flex-wrap gap-3">
+        <ScrollReveal delay={100} className="mt-10 flex flex-wrap gap-3" direction="up">
           <a
             href={wa}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-[#d9b674] px-6 py-3.5 text-sm font-semibold text-black shadow-xl shadow-slate-900/10 hover:-translate-y-0.5 hover:bg-[#caa15d]"
+            className="rounded-full bg-[#f15a24] px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#f15a24]/20 hover:-translate-y-0.5 hover:bg-[#d94a17]"
           >
             {t.sendWhatsApp}
           </a>
           <a
             href={`mailto:${brand.email}`}
-            className="rounded-full border border-slate-300 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:border-accent hover:text-accent"
+            className="rounded-full border border-[#e8e8e8] px-6 py-3.5 text-sm font-semibold text-[#171717] hover:border-[#f15a24] hover:text-[#f15a24]"
           >
             {t.sendEmail}
           </a>
         </ScrollReveal>
-        <ScrollReveal delay={160} className="mt-16 grid gap-4 border-t border-slate-200 pt-6 text-sm text-slate-600 sm:grid-cols-3">
+        <ScrollReveal delay={160} className="mt-16 grid gap-4 border-t border-[#e8e8e8] pt-6 text-sm text-[#666666] sm:grid-cols-3" direction="up">
           <p>{t.whatsapp}: +{brand.whatsapp}</p>
           <p className="mt-2">{t.email}: {brand.email}</p>
-          <p className="mt-6 text-sm font-semibold tracking-[0.2em] uppercase text-accent">{t.heroKicker}</p>
+          <p className="mt-6 text-sm font-semibold tracking-[0.2em] uppercase text-[#f15a24]">{t.heroKicker}</p>
         </ScrollReveal>
       </section>
     </div>
