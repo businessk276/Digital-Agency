@@ -7,10 +7,11 @@ import {
   getDocs,
   orderBy,
   query,
+  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import { getFirebaseApp } from "./firebase";
-import type { Category, DesignAsset, Project, Review, Service, Task, VideoEntry } from "./types";
+import type { Category, DesignAsset, HeroTitles, Project, Review, Service, Task, VideoEntry } from "./types";
 
 function requireDb() {
   const fb = getFirebaseApp();
@@ -20,6 +21,24 @@ function requireDb() {
 
 function withId<T>(id: string, data: Omit<T, "id">): T {
   return { id, ...data } as T;
+}
+
+export async function getHeroTitles(): Promise<Partial<HeroTitles> | null> {
+  const db = requireDb();
+  const snapshot = await getDoc(doc(db, "siteContent", "heroTitles"));
+  if (!snapshot.exists()) return null;
+
+  const data = snapshot.data();
+  const titles: Partial<HeroTitles> = {};
+  if (typeof data.en === "string") titles.en = data.en;
+  if (typeof data.bn === "string") titles.bn = data.bn;
+  if (typeof data.ar === "string") titles.ar = data.ar;
+  return titles;
+}
+
+export async function saveHeroTitles(titles: HeroTitles) {
+  const db = requireDb();
+  await setDoc(doc(db, "siteContent", "heroTitles"), titles, { merge: true });
 }
 
 export async function listCategories(): Promise<Category[]> {

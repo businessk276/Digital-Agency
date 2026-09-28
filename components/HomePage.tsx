@@ -3,9 +3,9 @@
 import { Children, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { isFirebaseConfigured } from "@/lib/firebase";
-import { listCategories, listDesignAssets, listProjects, listReviews, listServices, listTasks, listVideos } from "@/lib/firestore";
+import { getHeroTitles, listCategories, listDesignAssets, listProjects, listReviews, listServices, listTasks, listVideos } from "@/lib/firestore";
 import { brand } from "@/lib/content";
-import type { Category, DesignAsset, Project, Review, Service, Task, VideoEntry } from "@/lib/types";
+import type { Category, DesignAsset, HeroTitles, Project, Review, Service, Task, VideoEntry } from "@/lib/types";
 import { useLang } from "./LanguageProvider";
 import { ScrollReveal } from "./ScrollReveal";
 import { SitePreview } from "./SitePreview";
@@ -13,7 +13,8 @@ import { VideoGallery } from "./VideoGallery";
 import { getDriveImageFallbackUrl, getDriveImageUrl } from "@/lib/video";
 
 export function HomePage() {
-  const { t } = useLang();
+  const { t, language } = useLang();
+  const [heroTitles, setHeroTitles] = useState<Partial<HeroTitles>>({});
   const [projects, setProjects] = useState<Project[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -24,6 +25,15 @@ export function HomePage() {
   const [active, setActive] = useState("all");
   const [selectedReview, setSelectedReview] = useState<Review | null>(null);
   const [selectedDesign, setSelectedDesign] = useState<DesignAsset | null>(null);
+
+  useEffect(() => {
+    if (!isFirebaseConfigured) return;
+    getHeroTitles()
+      .then((titles) => {
+        if (titles) setHeroTitles(titles);
+      })
+      .catch(() => undefined);
+  }, []);
 
   useEffect(() => {
     if (!selectedReview && !selectedDesign) return;
@@ -82,13 +92,13 @@ export function HomePage() {
   return (
     <div className="overflow-x-clip">
       <section id="home" className="relative overflow-hidden border-b border-[#e8e8e8] bg-white/80">
-        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24">
           <div className="reveal-up max-w-4xl">
             <p className="eyebrow mb-5">
               {t.heroKicker}
             </p>
             <h1 className="font-display max-w-3xl text-5xl leading-[0.98] text-[#171717] sm:text-[3.4rem] md:text-[4.4rem] lg:text-[5rem]">
-              {t.heroTitle}
+              {heroTitles[language] || t.heroTitle}
             </h1>
             <p className="mt-7 max-w-xl text-base leading-7 text-[#666666] md:text-lg md:leading-8">{t.heroBody}</p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -114,6 +124,18 @@ export function HomePage() {
               </a>
             </div>
           </div>
+          <div className="-translate-y-3 overflow-hidden rounded-2xl border border-[#e8e8e8] bg-[#fff7f3] shadow-xl shadow-[#171717]/10">
+            <video
+              className="aspect-video w-full object-cover"
+              src="/Hero-sectionVideo.mp4"
+              autoPlay
+              muted
+              controls
+              loop
+              playsInline
+              preload="metadata"
+            />
+          </div>
         </div>
         <div className="flex justify-center pb-12 text-center md:pb-16">
           <div className="flex flex-col items-center">
@@ -125,7 +147,7 @@ export function HomePage() {
       </section>
 
       <div className="overflow-hidden border-y border-[#e8e8e8] bg-[#fff7f3] py-3">
-        <p className="marquee whitespace-nowrap text-xs tracking-[0.45em] uppercase text-[#8a8a8a]">
+        <p className="marquee whitespace-nowrap text-sm tracking-[0.45em] uppercase text-black sm:text-base">
           {` ${brand.legalName} · ${t.marquee} · ${t.tagline} · `.repeat(6)}
         </p>
       </div>
@@ -404,11 +426,11 @@ function ServicesGrid({ services }: { services: Service[] }) {
       {labels.map((label, index) => (
         <ScrollReveal key={label} delay={index * 70}>
           <article
-            className="group min-h-48 border border-slate-200 bg-[#2b2d31] p-5 transition duration-300 hover:-translate-y-1 hover:border-accent hover:bg-accent hover:text-white hover:shadow-xl hover:shadow-accent/20"
+            className="group min-h-48 border border-[#333333] bg-[#171717] p-5 text-white transition duration-300 hover:-translate-y-1 hover:border-[#ef4444] hover:bg-[#dc2626] hover:text-white hover:shadow-xl hover:shadow-red-600/20"
           >
-            <p className="text-[11px] font-semibold tracking-[0.3em] text-accent group-hover:text-white/70">{String(index + 1).padStart(2, "0")}</p>
+            <p className="text-[11px] font-semibold tracking-[0.3em] text-[#ef4444] group-hover:text-white/80">{String(index + 1).padStart(2, "0")}</p>
             <h3 className="mt-10 max-w-xs text-lg font-semibold leading-6">{label}</h3>
-            <p className="mt-4 text-xs uppercase tracking-[0.16em] text-slate-400 group-hover:text-white/70">{t.capability}</p>
+            <p className="mt-4 text-xs uppercase tracking-[0.16em] text-white/60 group-hover:text-white/80">{t.capability}</p>
           </article>
         </ScrollReveal>
       ))}

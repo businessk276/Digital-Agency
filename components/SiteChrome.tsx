@@ -81,10 +81,10 @@ export function SiteHeader() {
           <BrandLogo className="h-10 w-auto shrink-0 bg-white sm:h-12 lg:h-14" priority />
           <span className="sr-only">{brand.legalName}</span>
         </SectionLink>
-        <p className="hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8a8a8a] lg:block">{t.headerDescriptor}</p>
+        <p className="hidden text-xs font-semibold uppercase tracking-[0.22em] text-[#8a8a8a] lg:block">{t.headerDescriptor}</p>
         <div className="flex items-center gap-2 sm:order-4">
           <label className="sr-only" htmlFor="language-switcher">{t.switchLanguage}</label>
-          <select id="language-switcher" value={language} onChange={(event) => setLanguage(event.target.value as typeof language)} className="border border-[#e8e8e8] bg-white px-2 py-2 text-xs font-semibold text-[#171717] outline-none ring-0 transition focus:border-[#f15a24]">
+          <select id="language-switcher" value={language} onChange={(event) => setLanguage(event.target.value as typeof language)} className="border border-[#e8e8e8] bg-white px-2 py-2 text-sm font-semibold text-[#171717] outline-none ring-0 transition focus:border-[#f15a24]">
             <option value="ar">العربية</option>
             <option value="bn">বাংলা</option>
             <option value="en">English</option>
@@ -94,21 +94,21 @@ export function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="site-navigation"
             onClick={() => setMenuOpen((open) => !open)}
-            className="border border-[#e8e8e8] px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#171717] sm:hidden"
+            className="border border-[#e8e8e8] px-3 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-[#171717] sm:hidden"
           >
             {menuOpen ? t.menuClose : t.menuOpen}
           </button>
           <SectionLink
             id="contact"
             onNavigate={() => setMenuOpen(false)}
-            className="rounded-full bg-[#f15a24] px-3 py-2 text-xs font-semibold text-white shadow-lg shadow-[#f15a24]/20 hover:-translate-y-0.5 hover:bg-[#d94a17] sm:px-5 sm:py-2.5 sm:text-sm"
+            className="rounded-full bg-[#f15a24] px-3 py-2 text-sm font-semibold text-white shadow-lg shadow-[#f15a24]/20 hover:-translate-y-0.5 hover:bg-[#d94a17] sm:px-5 sm:py-2.5"
           >
             {t.ctaPrimary}
           </SectionLink>
         </div>
         <nav
           id="site-navigation"
-          className={`${menuOpen ? "flex" : "hidden"} order-3 w-full flex-col items-stretch gap-1 border-t border-[#e8e8e8] pt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#666666] sm:order-3 sm:flex sm:w-auto sm:flex-row sm:items-center sm:gap-2 sm:border-0 sm:p-0 sm:text-[11px]`}
+          className={`${menuOpen ? "flex" : "hidden"} order-3 w-full flex-col items-stretch gap-1 border-t border-[#e8e8e8] pt-2 text-sm font-semibold uppercase tracking-[0.12em] text-[#666666] sm:order-3 sm:flex sm:w-auto sm:flex-row sm:items-center sm:gap-2 sm:border-0 sm:p-0`}
         >
           {links.map((link) => (
             <SectionLink

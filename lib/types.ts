@@ -2,6 +2,12 @@ export type CategoryType = "project" | "task" | "both";
 
 export type TaskStatus = "planned" | "in_progress" | "done";
 
+export interface HeroTitles {
+  en: string;
+  bn: string;
+  ar: string;
+}
+
 export interface Category {
   id: string;
   name: string;

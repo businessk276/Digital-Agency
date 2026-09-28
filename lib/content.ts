@@ -114,6 +114,12 @@ export const copy = {
   ],
 };
 
+export const defaultHeroTitles = {
+  en: copy.heroTitle,
+  bn: "এমন একটি পেশাদার ডিজিটাল উপস্থিতি, যা গ্রাহকদের আকৃষ্ট করে এবং ব্যবসায় জয়ী করে।",
+  ar: "حضور رقمي احترافي يكسب العملاء.",
+};
+
 export const services = copy.services.map((label, index) => ({
   icon: String(index + 1).padStart(2, "0"),
   label,
